@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <script>
+    function checkRecord() {
+      // Define the correct names and roll numbers in an object
+      var correctRecords = {
+        "Nikita Tamang": "1",
+        "Nishan Bharati": "2",
+        "Nischit Bhattarai": "3",
+        "Pitamber Dhungel":"4",
+        "Prabin Acharya":"5",
+        "Prabin Rai":"6",
+        "Pragati Bista":"7",
+        "Rajib Dahal":"10",
+        "Research Devkota":"12"
+      };
+
+      // Get the values entered by the user
+      var enteredName = document.getElementById("name").value;
+      var enteredRollNumber = document.getElementById("rollNumber").value;
+
+      // Check if the entered values match any of the correct records
+      if (correctRecords.hasOwnProperty(enteredName) && correctRecords[enteredName] === enteredRollNumber) {
+        // Allow the form to be submitted
+        return true;
+      } else {
+        alert("Invalid name or roll number. Please retry."); // Prompt to retry
+        // Prevent the form from being submitted
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="form-container">
+  <h1>Please enter the details.</h1>
+  <form onsubmit="return checkRecord();" action="files-section.html" method="get">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required placeholder="Class Name"><br><br>
+    <label for="rollNumber">Roll Number:</label>
+    <input type="text" id="rollNumber" required placeholder="Class Roll Number"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  </div>
+</body>
+<style>
+  body{
+      background-color: black;
+  }
+  /* Form Container */
+.form-container {
+  max-width: 400px;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Form Inputs */
+.form-container input[type="text"],
+.form-container input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Form Submit Button */
+.form-container input[type="submit"] {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Form Submit Button (Hover) */
+.form-container input[type="submit"]:hover {
+  background-color:rgb(7, 255, 11);
+}
+
+/* Form Title */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+</style>
+</html>
