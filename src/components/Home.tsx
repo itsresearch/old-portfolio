@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Facebook, Instagram, FileText, Eye } from 'lucide-react';
-
+import profile from './images/profile.jpeg';
 const Home = () => {
   const [isPreviewHovered, setIsPreviewHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -46,8 +46,8 @@ const Home = () => {
         <div className="text-center p-8">
           <div className="mb-8">
             <img
-              src="./images/profile.jpeg"
-              alt="Professional headshot"
+              src="{profile}"
+              alt="Profile not found."
               className="w-48 h-48 rounded-full mx-auto border-4 border-blue-500 shadow-xl animate-fade-in"
             />
           </div>
