@@ -5,12 +5,12 @@ const Home = () => {
   const [isPreviewHovered, setIsPreviewHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  const backgroundImages = [
-    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-    "https://images.unsplash.com/photo-1605379399642-870262d3d051",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    "https://images.unsplash.com/photo-1504639725590-34d0984388bd"
-  ];
+  // const backgroundImages = [
+  //   "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+  //   "https://images.unsplash.com/photo-1605379399642-870262d3d051",
+  //   "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+  //   "https://images.unsplash.com/photo-1504639725590-34d0984388bd"
+  // ];
 
   useEffect(() => {
     const interval = setInterval(() => {
