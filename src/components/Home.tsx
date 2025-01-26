@@ -46,7 +46,7 @@ const Home = () => {
         <div className="text-center p-8">
           <div className="mb-8">
             <img
-              src="src\images\profile.jpeg"
+              src="./images/profile.jpeg"
               alt="Professional headshot"
               className="w-48 h-48 rounded-full mx-auto border-4 border-blue-500 shadow-xl animate-fade-in"
             />
