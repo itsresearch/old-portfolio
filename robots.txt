@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /protectedsection/
+
+Sitemap: https://devkotaresearch.com.np/sitemap.xml

@@ -21,11 +21,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
 
   const handleClick = (id: string) => {
     setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false); // Close menu after selecting a section
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -41,10 +38,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
       </div>
 
       {/* Desktop Navbar */}
-      <div
-        className={`fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-800/50 backdrop-blur-lg rounded-2xl p-4 shadow-xl hidden md:block`}
-      >
-        <div className="space-y-8">
+      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-800/50 backdrop-blur-lg rounded-2xl p-4 shadow-xl hidden md:block">
+        <div className="space-y-6">
           {navItems.map(({ id, icon: Icon, label }) => (
             <div
               key={id}
@@ -52,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
               onClick={() => handleClick(id)}
             >
               <div
-                className={`p-3 rounded-xl transition-all duration-300 ${
+                className={`p-3 rounded-xl transition-transform duration-300 group-hover:scale-110 ${
                   activeSection === id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-400 hover:bg-blue-600/20 hover:text-blue-400'
@@ -60,9 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
               >
                 <Icon size={24} />
               </div>
-              <span className="text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {label}
-              </span>
+              <span className="text-xs mt-2 text-gray-300">{label}</span>
             </div>
           ))}
         </div>
@@ -72,28 +65,26 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
       <div
         className={`fixed inset-0 bg-gray-900/90 z-40 transform ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 md:hidden`}
+        } transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8`}
       >
-        <div className="flex flex-col items-center justify-center space-y-8 h-full">
-          {navItems.map(({ id, icon: Icon, label }) => (
+        {navItems.map(({ id, icon: Icon, label }) => (
+          <div
+            key={id}
+            className="flex flex-col items-center cursor-pointer group"
+            onClick={() => handleClick(id)}
+          >
             <div
-              key={id}
-              className="flex flex-col items-center cursor-pointer group"
-              onClick={() => handleClick(id)}
+              className={`p-3 rounded-xl transition-transform duration-300 group-hover:scale-110 ${
+                activeSection === id
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:bg-blue-600/20 hover:text-blue-400'
+              }`}
             >
-              <div
-                className={`p-3 rounded-xl transition-all duration-300 ${
-                  activeSection === id
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:bg-blue-600/20 hover:text-blue-400'
-                }`}
-              >
-                <Icon size={24} />
-              </div>
-              <span className="text-xs mt-1 text-white">{label}</span>
+              <Icon size={24} />
             </div>
-          ))}
-        </div>
+            <span className="text-xs mt-2 text-white">{label}</span>
+          </div>
+        ))}
       </div>
     </nav>
   );

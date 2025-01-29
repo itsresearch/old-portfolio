@@ -11,47 +11,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      // Here you would integrate with your email service (e.g., EmailJS, SendGrid, or your backend)
-      // Example using EmailJS:
-      /*
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          to_email: 'researchofficial55@gmail.com',
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        'YOUR_USER_ID'
-      );
-      */
-      
-      // For now, we'll simulate the email sending
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 3000);
-    } catch (error) {
-      setSubmitStatus('error');
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 3000);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -63,12 +22,12 @@ const Contact = () => {
     <div className="min-h-screen p-16">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold mb-12 text-blue-400">Contact Me</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8">
               <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
@@ -79,43 +38,41 @@ const Contact = () => {
                     <p className="text-gray-300">researchofficial55@gmail.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
                     <Phone size={24} className="text-blue-400" />
                   </div>
                   <div>
                     <h4 className="font-medium">Phone</h4>
-                    <p className="text-gray-300">+1234567890</p>
+                    <p className="text-gray-300">+977 9862414236</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
                     <MapPin size={24} className="text-blue-400" />
                   </div>
                   <div>
-                    <h4 className="font-medium">Location</h4>
-                    <p className="text-gray-300">City, Country</p>
+                    <h4 className="font-medium">Kathmandu</h4>
+                    <p className="text-gray-300">Nepal</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <form onSubmit={handleSubmit} className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8">
-            {submitStatus === 'success' && (
-              <div className="mb-4 p-4 bg-green-500/20 text-green-400 rounded-lg">
-                Message sent successfully! I'll get back to you soon.
-              </div>
-            )}
-            
-            {submitStatus === 'error' && (
-              <div className="mb-4 p-4 bg-red-500/20 text-red-400 rounded-lg">
-                Failed to send message. Please try again later.
-              </div>
-            )}
-            
+
+          {/* Contact Form using FormSubmit */}
+          <form
+            action="https://formsubmit.co/142128ee8bee21e80b896817a2c2e9f4"
+            method="POST"
+            className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8"
+            onSubmit={() => setIsSubmitting(true)}
+          >
+            {/* Hidden input to prevent spam bots */}
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -131,7 +88,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
                   Email
@@ -146,7 +103,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium mb-2">
                   Subject
@@ -161,7 +118,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
                   Message
@@ -176,7 +133,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}

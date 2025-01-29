@@ -53,7 +53,7 @@ const Home = () => {
 
           <h1 className="text-5xl font-bold mb-4 animate-fade-in">Research Devkota</h1>
           <p className="text-xl text-gray-300 mb-8 animate-fade-in-delay">
-            Full Stack Developer | Python Expert | DevOps Enthusiast
+            Full Stack Developer | Python Expert | Django
           </p>
 
           <div className="flex justify-center gap-6 mb-8">
